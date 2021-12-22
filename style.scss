@@ -71,4 +71,17 @@ body {
     // flex-direction: column;
     // align-items: center;
   }
+
+  ul {
+    margin-top: 1.5rem;
+
+    li {
+      list-style-type: none;
+      background: rgb(255, 231, 94);
+      margin: 0.5rem;
+      padding: 0.5rem;
+      border-radius: 3px;
+      width: 40%;
+    }
+  }
 }

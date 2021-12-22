@@ -79,4 +79,17 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+
+.container ul {
+  margin-top: 1.5rem;
+}
+
+.container ul li {
+  list-style-type: none;
+  background: #ffe75e;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 3px;
+  width: 40%;
+}
 /*# sourceMappingURL=style.css.map */
