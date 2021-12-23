@@ -94,7 +94,11 @@ h1 {
   width: 40%;
 }
 
-.output-style {
+.outer-div-style {
+  margin-bottom: 1rem;
+}
+
+.outer-div-style .output-style {
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -104,14 +108,14 @@ h1 {
           justify-content: space-between;
 }
 
-.output-style p {
+.outer-div-style .output-style p {
   width: 60%;
   background: #ffdd45;
   padding: 0.5rem 0.5rem;
   border-radius: 3px;
 }
 
-.output-style button {
+.outer-div-style .output-style button {
   background: #ff637d;
   border: none;
   border-radius: 3px;
@@ -119,12 +123,8 @@ h1 {
   cursor: pointer;
 }
 
-.output-style button:hover {
+.outer-div-style .output-style button:hover {
   background: #ff748b;
-}
-
-.outer-div-style {
-  margin-bottom: 1rem;
 }
 
 .hidden {
