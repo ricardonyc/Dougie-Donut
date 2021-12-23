@@ -50,7 +50,6 @@ function addInfo(complaintsOutput, obj) {
   complaintsOutput.appendChild(outerDiv);
 
   const resolution = document.createElement("p");
-  // resolution.style.display = 'none'
   resolution.classList.add("hidden");
   const resolutionText = document.createTextNode(
     `${obj.resolution_description}`
