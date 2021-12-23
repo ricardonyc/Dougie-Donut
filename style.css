@@ -10,9 +10,6 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -23,6 +20,10 @@ body {
   background: #eeaeca;
   background: radial-gradient(circle, #eeaeca 0%, #94bbe9 100%);
   padding: 1rem;
+}
+
+h1 {
+  margin-top: 10rem;
 }
 
 .container {
@@ -91,5 +92,42 @@ body {
   padding: 0.5rem;
   border-radius: 3px;
   width: 40%;
+}
+
+.output-style {
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.output-style p {
+  width: 60%;
+  background: #ffdd45;
+  padding: 0.5rem 0.5rem;
+  border-radius: 3px;
+}
+
+.output-style button {
+  background: #ff637d;
+  border: none;
+  border-radius: 3px;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+}
+
+.output-style button:hover {
+  background: #ff748b;
+}
+
+.outer-div-style {
+  margin-bottom: 1rem;
+}
+
+.hidden {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */

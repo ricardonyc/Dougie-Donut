@@ -1,16 +1,4 @@
-// // Requirements
-// //   - 5 buttons representing boroughs
-// //   - Input box where it takes a number to see NUMBER OF COMPLAINTS
-// //   - when one of the 5 buttons are clicked, the number of complaints should be displayed on page according to NUM of
-// //     complaints and borough they clicked on
-// //     - IF the user doesn't input any number, make the default be 10
-// //     - they only want complaints that were handled by the NYPD (consider filtering for specific "agency" when making the API call)
-// //     - When the list of complaints show, each complaint should also have a button next to it that reads "see police response"
-// //     - When the user clicks on "see police response" button, it should toggle how the police responded to that complaint
-// //     - Make sure it only toggles the response for that ONE complaint, not the entire list!
-
 const buttons = document.querySelectorAll("button");
-// const userInput = document.getElementById("user-input")
 
 buttons.forEach((borough) => {
   borough.addEventListener("click", () => {
@@ -24,24 +12,56 @@ buttons.forEach((borough) => {
 });
 
 function getData(borough, inputNum) {
-  const ul = document.createElement("ul");
   fetch(
-    `https://data.cityofnewyork.us/resource/erm2-nwe9.json?$limit=${inputNum}&borough=${borough}&agency=NYPD`
+    `https://data.cityofnewyork.us/resource/erm2-nwe9.json?borough=${borough}&agency=NYPD`
   )
     .then((res) => res.json())
-    .then((data) => {
-      data.map((complaint) => {
-        console.log(complaint.complaint_type);
-        const li = document.createElement("li");
-        li.innerHTML = complaint.complaint_type;
-        document.querySelector(".container").appendChild(ul);
-        ul.appendChild(li);
-        // console.log(complaint);
-        // console.log(complaint.complaint_type);
-        // console.log(complaint.resolution_description);
+    .then((infoArray) => {
+      const randomArray = [];
+      // Getting random elements
+      for (let i = 0; i < inputNum; i++) {
+        const randomNum = Math.floor(Math.random() * infoArray.length);
+        randomArray.push(infoArray[randomNum]);
+      }
+      infoArray = randomArray;
+      const complaintsOutput = document.getElementById("complaint-container");
+      complaintsOutput.innerText = "";
+      infoArray.map((obj, index) => {
+        addInfo(complaintsOutput, obj);
       });
     });
 }
 
-// use math.random to get a random position of the complaint property
-// set userInput to the number of complaints shown
+function addInfo(complaintsOutput, obj) {
+  const outerDiv = document.createElement("div");
+  const innerDiv = document.createElement("div");
+  const p = document.createElement("p");
+  const btn = document.createElement("button");
+  const btnMsg = document.createTextNode("WHAT DID THE POLICE DO?!");
+  btn.appendChild(btnMsg);
+
+  const complaintText = document.createTextNode(`${obj.complaint_type}`);
+  p.appendChild(complaintText);
+  outerDiv.appendChild(innerDiv);
+  innerDiv.appendChild(p);
+  innerDiv.appendChild(btn);
+  innerDiv.classList.add("output-style");
+  outerDiv.classList.add("outer-div-style");
+  complaintsOutput.appendChild(outerDiv);
+
+  const resolution = document.createElement("p");
+  // resolution.style.display = 'none'
+  resolution.classList.add("hidden");
+  const resolutionText = document.createTextNode(
+    `${obj.resolution_description}`
+  );
+  resolution.appendChild(resolutionText);
+
+  outerDiv.appendChild(resolution);
+
+  console.log(complaintsOutput);
+
+  btn.addEventListener("click", () => {
+    resolution.classList.toggle("hidden");
+  });
+}
